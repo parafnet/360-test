@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<krpano version="1.0.8">
+  <!-- activated hotpot -->
+  <plugin name="activespot" url="skin/mappointactive.png" keep="true" align="center" edge="center" visible="false" zorder="1011" />
+  <!-- radar plugin, set heading with "plugin[radar].heading" -->
+  <plugin name="radar--atar" url="%SWFPATH%/plugins/radar.swf" alturl="%SWFPATH%/plugins/radar.js" zorder="1010" keep="true" heading="30" parent="Map6thContainer" align="lefttop" edge="center" x="0" y="0" linecolor="0" fillcolor="0xFF0000" scale="0.6" visible="true" editmode="true" />
+  <action name="activatespot--atar">
+    set(plugin[activespot].parent, plugin[%1]);
+    set(plugin[activespot].visible, true);
+
+    copy(plugin[radar--atar].x, plugin[%1].x);
+    copy(plugin[radar--atar].y, plugin[%1].y);
+
+    set(plugin[radar--atar].visible, true);
+    set(plugin[radar--atar].heading, %2);
+
+    set(plugin[radar--mafakher].visible, false);
+    set(plugin[radar--ferdosi].visible, false);
+    set(plugin[radar--atar].visible, true);
+  </action>
+  <!-- load and update map actions -->
+  <action name="update_map_spot--atar">
+    plugin[Map6thContainer].activatespot(%1);
+    plugin[Map6thContainer].pantospot(%1);
+    activatespot--atar(%1);
+    GotoMap(BTN6th);
+    loadscene(%1, null, MERGE, BLEND(1));
+  </action>
+  <action name="activatespotRadar--atar">
+    plugin[Map6thContainer].activatespot(%1);
+    plugin[Map6thContainer].pantospot(%1);
+    activatespot--atar(%1);
+    GotoMap(BTN6th);
+  </action>
+  <plugin name="scene_69" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="30" y="157" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_70" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="84" y="159" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_71" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="134" y="157" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_72" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="187" y="157" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_73" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="236" y="158" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_74" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="271" y="158" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_75" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="270" y="125" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_76" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="237" y="124" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_77" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="186" y="123" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_78" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="134" y="124" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_79" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="85" y="123" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_80" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="30" y="123" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_81" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="30" y="89" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_82" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="84" y="90" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_83" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="135" y="90" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_84" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="186" y="90" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_85" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="237" y="92" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_86" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="271" y="91" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_87" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="269" y="58" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_88" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="236" y="57" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_89" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="185" y="56" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_90" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="134" y="57" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_91" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="84" y="56" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+  <plugin name="scene_92" url="skin/mappoint.png" keep="true" parent="Map6thContainer" align="lefttop" edge="center" zorder="1011" x="31" y="57" onhover2="showtext(تالار عطار);" onclick="update_map_spot--atar(get(name));" />
+</krpano>

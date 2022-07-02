@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<krpano version="1.0.8">
+  <!-- activated hotpot -->
+  <plugin name="activespot" url="skin/mappointactive.png" keep="true" align="center" edge="center" visible="false" zorder="1011" />
+  <!-- radar plugin, set heading with "plugin[radar].heading" -->
+  <plugin name="radar--ferdosi" url="%SWFPATH%/plugins/radar.swf" alturl="%SWFPATH%/plugins/radar.js" zorder="1111" keep="true" heading="0" parent="Map4thContainer" align="lefttop" edge="center" x="0" y="0" linecolor="0" fillcolor="0xFF0000" scale="0.6" visible="true" editmode="true" />
+  <action name="activatespot--ferdosi">
+    set(plugin[activespot].parent, plugin[%1]);
+    set(plugin[activespot].visible, true);
+
+    copy(plugin[radar--ferdosi].x, plugin[%1].x);
+    copy(plugin[radar--ferdosi].y, plugin[%1].y);
+
+    set(plugin[radar--ferdosi].visible, true);
+    set(plugin[radar--ferdosi].heading, %2);
+
+    set(plugin[radar--ferdosi].visible, false);
+    set(plugin[radar--ferdosi].visible, true);
+    set(plugin[radar--atar].visible, false);
+  </action>
+  <!-- load and update map actions -->
+  <action name="update_map_spot--ferdosi">
+		plugin[Map4thContainer].activatespot(%1);
+		plugin[Map4thContainer].pantospot(%1);
+		activatespot--ferdosi(%1);
+		GotoMap(BTN4th);
+		loadscene(%1, null, MERGE, BLEND(1));
+	</action>
+  <action name="activatespotRadar--ferdosi">
+		plugin[Map4thContainer].activatespot(%1);
+		plugin[Map4thContainer].pantospot(%1);
+		activatespot--ferdosi(%1);
+		GotoMap(BTN4th);
+	</action>
+  <plugin name="scene_01" url="skin/mappoint.png" keep="true" parent="Map4thContainer" align="lefttop" edge="center" zorder="1011" x="27" y="161" onhover2="showtext(mafakher09);" onclick="update_map_spot--ferdosi(get(name));" />
+  <plugin name="scene_02" url="skin/mappoint.png" keep="true" parent="Map4thContainer" align="lefttop" edge="center" zorder="1011" x="27" y="131" onhover2="showtext(mafakher09);" onclick="update_map_spot--ferdosi(get(name));" />
+  <plugin name="scene_03" url="skin/mappoint.png" keep="true" parent="Map4thContainer" align="lefttop" edge="center" zorder="1011" x="27" y="100" onhover2="showtext(mafakher09);" onclick="update_map_spot--ferdosi(get(name));" />
+  <plugin name="scene_04" url="skin/mappoint.png" keep="true" parent="Map4thContainer" align="lefttop" edge="center" zorder="1011" x="27" y="53" onhover2="showtext(mafakher09);" onclick="update_map_spot--ferdosi(get(name));" />
+  <plugin name="scene_05" url="skin/mappoint.png" keep="true" parent="Map4thContainer" align="lefttop" edge="center" zorder="1011" x="28" y="22" onhover2="showtext(mafakher09);" onclick="update_map_spot--ferdosi(get(name));" />
+  <plugin name="scene_06" url="skin/mappoint.png" keep="true" parent="Map4thContainer" align="lefttop" edge="center" zorder="1011" x="142" y="21" onhover2="showtext(mafakher09);" onclick="update_map_spot--ferdosi(get(name));" />
+  <plugin name="scene_07" url="skin/mappoint.png" keep="true" parent="Map4thContainer" align="lefttop" edge="center" zorder="1011" x="74" y="52" onhover2="showtext(mafakher10);" onclick="update_map_spot--ferdosi(get(name));" />
+  <plugin name="scene_08" url="skin/mappoint.png" keep="true" parent="Map4thContainer" align="lefttop" edge="center" zorder="1011" x="77" y="92" onhover2="showtext(mafakher11);" onclick="update_map_spot--ferdosi(get(name));" />
+  <plugin name="scene_09" url="skin/mappoint.png" keep="true" parent="Map4thContainer" align="lefttop" edge="center" zorder="1011" x="73" y="132" onhover2="showtext(mafakher12);" onclick="update_map_spot--ferdosi(get(name));" />
+  
+</krpano>

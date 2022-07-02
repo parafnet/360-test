@@ -1,0 +1,57 @@
+﻿<krpano version="1.0.8">
+	<contextmenu enterfs="نمایش بصورت تمام صفحه" exitfs="خروج از نمایش صفحه تمام ">
+		<item caption="تیه شده در اکسپو آنلاین" onclick="openurl('https://expoo.ir',_blank);"/>
+		<item caption="www.expoo.ir" onclick="openurl('http://expoo.ir',_blank);" />
+		<item name="cc" caption="Change Controlmode" onclick="cm_changecontrolmode();"  separator="true" />
+		<item name="nv" caption="Normal View"        onclick="cm_normal_view();"        showif="view.vlookatrange == 180" separator="true"      />
+		<item name="fv" caption="Fisheye View"       onclick="cm_fisheye_view();"       showif="view.vlookatrange == 180" devices="flash|webgl" />
+		<item name="sv" caption="Stereographic View" onclick="cm_stereographic_view();" showif="view.vlookatrange == 180" devices="flash|webgl" />
+		<item name="av" caption="Architectural View" onclick="cm_architectural_view();" showif="view.vlookatrange == 180"                       />
+		<item name="pv" caption="Pannini View"       onclick="cm_pannini_view();"       showif="view.vlookatrange == 180" devices="flash|webgl" />
+		<item name="lp" caption="Little Planet View" onclick="cm_littleplanet_view();"  showif="view.vlookatrange == 180" devices="flash|webgl" />
+	</contextmenu>
+
+	<action name="rectview">
+		tween(view.fovmax,       150.0, distance(150, 0.25), easeoutquad);
+		tween(view.architectural,  0.0, distance(1.0, 0.25), easeoutquad);
+		tween(view.fisheye,        0.0, distance(1.0, 0.25), easeoutquad, set(view.stereographic,false);set(display.flash10,on); );
+	</action>
+	
+	<action name="fisheyeview">
+		set(display.flash10,off);
+		tween(view.architectural, 0.0, distance(1.0, 0.25), easeoutquad);
+		tween(view.fisheye,       0.0 ,distance(1.0, 0.20), easeoutquad,
+				set(view.stereographic,false);
+				set(view.fovmax,179);
+				tween(view.fisheye, 0.35, distance(1.0, 1.25));
+			 );
+	</action>
+	
+	<action name="stereofisheyeview">
+		set(display.flash10,off);
+		tween(view.architectural, 0.0, distance(1.0, 0.25), easeoutquad);
+		tween(view.fisheye,       0.0 ,distance(1.0, 0.10), easeoutquad,
+				set(view.stereographic,true);
+				tween(view.fisheye, 1.0, distance(1.0, 1.25));
+				tween(view.fovmax,  150, distance(179, 1.25));
+			 );
+	</action>
+	
+	<action name="littleplanet">
+		set(display.flash10,off);
+		tween(view.architectural, 0.0, distance(1.0, 0.25), easeoutquad);
+		tween(view.fisheye,       0.0 ,distance(1.0, 0.10), easeoutquad,
+				set(view.stereographic,true);
+				tween(view.fisheye, 1.0, distance(1.0, 0.75));
+				tween(view.fov,     130, distance(179, 0.75), easeoutquad, set(view.fovmax,150););
+				tween(view.vlookat,  90, distance(179, 0.75), easeoutquad);
+			 );
+	</action>
+	
+	<action name="architectural">
+		tween(view.fovmax,       155.0, distance(179, 0.25), easeoutquad);
+		tween(view.architectural,  1.0, distance(1.0, 0.25), easeoutquad);
+		tween(view.fisheye,        0.0, distance(1.0, 0.25), easeoutquad, set(view.stereographic,false);set(display.flash10,on); );
+	</action>	
+	
+</krpano>

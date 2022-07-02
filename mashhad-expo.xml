@@ -1,0 +1,571 @@
+﻿  <krpano version="1.0.8">
+
+  <plugin name="open-map"  url="skin/open.png"  keep="true"
+	        align="lefttop"
+	        scalechildren="false"
+            width="132"
+            height="70"
+            zorder="11000"
+            x="-170"
+            y="100"
+        scale.mobile="0.7"
+            alpha="0.4"
+   			onclick="EnableShowMap();"
+			onhover="showtext('نمايش نقشه نمايشگاه', defText);"
+            />
+  
+  <plugin name="intro-map-container"
+			url="skin/blank.png"
+			align="center" x="0" y="0"
+			keep="true"
+			maskchildren="false"
+	        handcursor="false"
+			zorder="10000"
+      
+			width="250"
+			height="341"
+	        />
+  <plugin name="close-map-intro"  url="skin/close.png"  keep="true"
+	        align="righttop"
+	        scalechildren="false"
+            width="33"
+            height="34"
+            zorder="11000"
+			parent="intro-map-container"
+            x="-15"
+            y="-25"
+        
+   			onclick="DisableShowMap();"
+			onhover="showtext('بستن پنجره', defText);"
+            />
+
+  <plugin name="intro-map-background"
+			url="skin/background.png"
+			parent="intro-map-container"
+			align="center" x="0" y="0"
+			keep="true"
+			maskchildren="false"
+			scalechildren="false"
+	        handcursor="false"
+			zorder="10001"
+			width="250"
+			height="341"
+			blendmode="Multiply"
+	        />
+  <plugin name="intro-map"
+			url="skin/intro-map.jpg"
+			parent="intro-map-container"
+	        handcursor="false"
+			align="center" x="0" y="0"
+			keep="true"
+			maskchildren="false"
+			scalechildren="false"
+			zorder="10002"
+			width="250"
+			height="341"
+          
+			blendmode="normal"
+	        />
+
+  
+  
+ <plugin name="BTN4th"
+        url="skin/blank.png"
+        parent="intro-map-container"
+        handcursor="true"
+        align="righttop" x="0" y="240"
+        keep="true"
+        maskchildren="false"
+        scalechildren="true"
+        zorder="20004"
+        width="83"
+        height="100"
+        onhover="showtext('ورود به تالار فردوسی', defText);"
+        onclick="GotoMap(BTN4th);loadscene(scene_01, null, MERGE, BLEND(1));"
+			
+	        />
+   
+  <plugin name="BTN5th"
+			url="skin/blank.png"
+			parent="intro-map-container"
+	        handcursor="true"
+			align="righttop" x="83" y="240"
+			keep="true"
+			maskchildren="false"
+			scalechildren="true"
+			zorder="20004"
+			width="83"
+			height="100"
+			onhover="showtext('ورود به تالار مفاخر', defText);"
+			onclick="loadscene(scene_10, null, MERGE, BLEND(1));"
+			
+	        />
+  <!--<plugin name="BTN5thimage"
+			url="skin/BTN5th.png"
+			parent="intro-map-container"
+	        handcursor="false"
+			align="righttop" x="0" y="-20"
+			keep="true"
+			maskchildren="false"
+			scalechildren="false"
+			zorder="10003"
+			width="250"
+			height="341"
+        
+			alpha="0"
+	        />-->
+  <plugin name="BTN6th"
+    url="skin/blank.png"
+    parent="intro-map-container"
+        handcursor="true"
+    align="righttop" x="165" y="240"
+    keep="true"
+    maskchildren="false"
+    scalechildren="true"
+    zorder="20004"
+    width="83"
+    height="100"
+    onhover="showtext('ورود به تالار عطار', defText);"
+    onclick="loadscene(scene_24, null, MERGE, BLEND(1));"
+			
+	        />
+<!--  <plugin name="BTN6thimage"
+			url="skin/BTN6th.png"
+			parent="intro-map-container"
+	        handcursor="false"
+			align="righttop" x="0" y="-20"
+			keep="true"
+			maskchildren="false"
+			scalechildren="false"
+			zorder="10003"
+			width="250"
+			height="341"
+			alpha="0"
+	        />-->
+  <action name="GotoMap">
+    hideintromap();
+    showmap();
+    if(%1 == "BTN4th",
+
+    set(plugin[Map4thContainer].enabled,true);
+    set(plugin[Map4thContainer].alpha, 1.0);
+
+    set(plugin[Map5thContainer].enabled,false);
+    set(plugin[Map5thContainer].alpha, 0.0);
+    
+    set(plugin[Map6thContainer].enabled,false);
+    set(plugin[Map6thContainer].alpha, 0.0);
+
+    );
+    if(%1 == "BTN5th",
+
+    set(plugin[Map4thContainer].enabled,false);
+    set(plugin[Map4thContainer].alpha, 0.0);
+    
+    set(plugin[Map5thContainer].enabled,true);
+    set(plugin[Map5thContainer].alpha, 1.0);
+
+    set(plugin[Map6thContainer].enabled,false);
+    set(plugin[Map6thContainer].alpha, 0.0);
+
+    );
+    if(%1 == "BTN6th",
+
+    set(plugin[Map4thContainer].enabled,false);
+    set(plugin[Map4thContainer].alpha, 0.0);
+    
+    set(plugin[Map5thContainer].enabled,false);
+    set(plugin[Map5thContainer].alpha, 0.0);
+
+    set(plugin[Map6thContainer].enabled,true);
+    set(plugin[Map6thContainer].alpha, 1.0);
+
+    );
+
+  </action>
+  <action name="EnableShowExpoo">
+    
+  </action>
+  <action name="EnableShowMap">
+    set(ShowMaps,'on');
+    tween(plugin[open-map].alpha, 0.40);
+    tween(plugin[open-map].x, -170);
+    if(lastmap == 'intro',
+    showintromap();
+    );
+    if(lastmap == 'dakhel',
+    showmap();
+    );
+  </action>
+  <action name="DisableShowMap">
+    tween(plugin[open-map].alpha, 1.0);
+    tween(plugin[open-map].x, 0);
+    hidemap();
+    hideintromap();
+    set(ShowMaps,'off');
+  </action>
+
+  <action name="hideintromap">
+    set(plugin[intro-map-container].enabled,false);
+    tween(plugin[intro-map-container].alpha, 0.0);
+    tween(plugin[intro-map-container].x, -300);
+    tween(plugin[intro-map-container].y, -0);
+  </action>
+  <action name="showintromap">
+    set(lastmap,'intro');
+    if(ShowMaps  == 'on',
+    set(plugin[intro-map-container].enabled,true);
+    tween(plugin[intro-map-container].alpha, 1.0);
+    tween(plugin[intro-map-container].x, -0);
+    tween(plugin[intro-map-container].y, -0);
+    );
+  </action>
+  <action name="showmap">
+    set(lastmap,'dakhel');
+    if(ShowMaps == 'on',
+    set(plugin[Map-container].enabled,true);
+    tween(plugin[Map-container].alpha, 1.0);
+    tween(plugin[Map-container].x, 7);
+    tween(plugin[Map-container].y, 7);
+    );
+  </action>
+  <action name="hidemap">
+    set(plugin[Map-container].enabled,false);
+    tween(plugin[Map-container].alpha, 0.0);
+    tween(plugin[Map-container].x, -200);
+    tween(plugin[Map-container].y, 7);
+  </action>
+
+
+
+
+
+  <plugin name="Map-container"  url="skin/blank.png"  keep="true"
+	        align="lefttop" handcursor="false"
+	        scalechildren="false"
+            width="347"
+            height="318"
+            zorder="1000"
+            maskchildren="true"
+			enabled="false"
+			alpha="0"
+            x="-200"
+            y="7"
+        
+            />
+
+  <plugin name="Map-Back"  url="skin/mapBack.png"  keep="true"
+	        align="lefttop" handcursor="false"
+	        scalechildren="true"
+            width="347"
+            height="318"
+            zorder="1000"
+            maskchildren="true"
+			blendmode="Multiply"
+			parent="Map-container"
+            x="0"
+            y="0"
+          
+            />
+  <plugin name="close-map"  url="skin/close.png"  keep="true"
+	        align="lefttop"
+	        scalechildren="false"
+            width="33"
+            height="34"
+            zorder="11000"
+			parent="Map-container"
+            x="5"
+            y="5"
+   			onclick="DisableShowMap();"
+			onhover="showtext('بستن پنجره', defText);"
+          
+            />
+  <plugin name="show-map-text"  url="skin/show-map-text.png"  keep="true"
+	        align="rightbottom"
+	        scalechildren="false"
+            width="130"
+            height="74"
+            zorder="1010"
+			parent="Map-container"
+            x="210"
+            y="15"
+   			onclick="hidemap();showintromap();"
+			onhover="showtext('نمايش نقشه کامل نمايشگاه', defText);"
+          
+            />
+
+
+  <plugin name="Map4thContainer"  url="skin/map-ferdosi.png"  keep="true"
+	        align="topleft"		        handcursor="false"
+	        scalechildren="false"
+            width="347"
+            height="318"
+            zorder="1005"
+			parent="Map-container"
+			enabled="false"
+			alpha="0"
+            x="0"
+            y="0"
+          
+            />
+
+
+  <plugin name="Map5thContainer"  url="skin/map-mafakher.png"  keep="true"
+	        align="topleft"		        handcursor="false"
+	        scalechildren="false"
+            width="347"
+            height="318"
+            zorder="1005"
+			parent="Map-container"
+			enabled="false"
+			alpha="0"
+            x="0"
+            y="0"
+          
+            />
+
+  <plugin name="Map6thContainer"  url="skin/map-atar.png"  keep="true"
+	        align="topleft"		        handcursor="false"
+	        scalechildren="false"
+            width="347"
+            height="318"
+            zorder="1005"
+			parent="Map-container"
+			enabled="false"
+			alpha="0"
+            x="0"
+            y="0"
+            />
+
+
+
+
+
+  <!--<include url="%SWFPATH%/mashhad-expo-bahar.xml" />
+  <include url="%SWFPATH%/mashhad-expo-molavi.xml" />
+  <include url="%SWFPATH%/mashhad-expo-yard.xml" />-->
+  <include url="%SWFPATH%/mashhad-expo-mafakher.xml" />
+  <include url="%SWFPATH%/mashhad-expo-ferdosi.xml" />
+  <include url="%SWFPATH%/mashhad-expo-atar.xml" />
+
+
+
+
+
+
+  <!--
+/////////////////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+===========================================================START RADAR=========================================================================
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////////////////////////////////////////////
+-->
+
+  <plugin name="Radar-container"
+			url="skin/blank.png"
+			parent="intro-map-container"
+	        handcursor="false"
+			align="center" x="0" y="0"
+			keep="true"
+			maskchildren="false"
+			scalechildren="false"
+			zorder="10010"
+			width="347"
+			height="318"
+			blendmode="normal"
+	        />
+
+
+
+
+  <!-- radar plugin, set heading with "plugin[radar].heading" -->
+  <plugin name="radar-birun"
+        url="%SWFPATH%/plugins/radar.swf"
+        alturl="%SWFPATH%/plugins/radar.js"
+        zorder="10010"
+        keep="true"
+        heading="30"
+        parent="Radar-container"
+
+        align="lefttop"
+        edge="center"
+        x="0" y="0"
+        linecolor="0"
+        fillcolor="0xff5a00"
+        scale="0.3"
+        visible="true"
+        editmode="true"
+	        />
+
+  <action name="activatespot-birun">
+    set(plugin[activespot].parent, plugin[%1]);
+    set(plugin[activespot].visible, true);
+
+    copy(plugin[radar-birun].x, plugin[%1].x);
+    copy(plugin[radar-birun].y, plugin[%1].y);
+
+    set(plugin[radar-birun].visible, true);
+    set(plugin[radar-birun].heading, %2);
+
+    showintromap();
+    hidemap();
+  </action>
+
+  <action name="update_map_spot-birun">
+    plugin[Radar-container].activatespot(%1);
+    plugin[Radar-container].pantospot(%1);
+    activatespot-birun(%1);
+    loadscene(%1, null, MERGE, BLEND(1));
+  </action>
+  <action name="activatespotRadar-birun">
+    plugin[Radar-container].activatespot(%1);
+    plugin[Radar-container].pantospot(%1);
+    activatespot-birun(%1);
+  </action>
+
+  <!--<plugin name="scene_15" url="skin/mappoint.png" keep="true" parent="Radar-container" align="lefttop" edge="center"  zorder="1011"
+    	x="314"
+    	y="468"
+    	onhover2="showtext();"
+    	onclick="update_map_spot-birun(get(name));"
+    	/>
+    <plugin name="scene_16" url="skin/mappoint.png" keep="true" parent="Radar-container" align="lefttop" edge="center"  zorder="1011"
+    	x="334"	
+    	y="423"
+    	onhover2="showtext(scene_Salon 01_sphere);"
+    	onclick="update_map_spot-birun(get(name));"
+    	/>
+    <plugin name="scene_17" url="skin/mappoint.png" keep="true" parent="Radar-container" align="lefttop" edge="center"  zorder="1011"
+    	x="334"
+    	y="373"
+    	onhover2="showtext(scene_Salon Abosaeid _sphere);"
+    	onclick="update_map_spot-birun(get(name));"
+    	/>
+    <plugin name="scene_18" url="skin/mappoint.png" keep="true" parent="Radar-container" align="lefttop" edge="center"  zorder="1011"
+    	x="343"
+    	y="355"
+    	onhover2="showtext(scene_salon bahar_sphere);"
+    	onclick="update_map_spot-birun(get(name));"
+    	/>
+
+    <plugin name="scene_19" url="skin/mappoint.png" keep="true" parent="Radar-container" align="lefttop" edge="center"  zorder="1011"
+    	x="316"
+    	y="302"
+    	onhover2="showtext();"
+    	onclick="update_map_spot-birun(get(name));"
+    	/>
+    <plugin name="scene_20" url="skin/mappoint.png" keep="true" parent="Radar-container" align="lefttop" edge="center"  zorder="1011"
+    	x="302"
+    	y="270"
+    	onhover2="showtext(anvari);"
+    	onclick="update_map_spot-birun(get(name));"
+    	/>
+  <plugin name="scene_21" url="skin/mappoint.png" keep="true" parent="Radar-container" align="lefttop" edge="center"  zorder="1011"
+  x="266"
+  y="248"
+  onhover2="showtext(anvari);"
+  onclick="update_map_spot-birun(get(name));"
+    	/>
+  <plugin name="scene_22" url="skin/mappoint.png" keep="true" parent="Radar-container" align="lefttop" edge="center"  zorder="1011"
+  x="224"
+  y="235"
+  onhover2="showtext(anvari);"
+  onclick="update_map_spot-birun(get(name));"
+    	/>
+  <plugin name="scene_23" url="skin/mappoint.png" keep="true" parent="Radar-container" align="lefttop" edge="center"  zorder="1011"
+  x="190"
+  y="240"
+  onhover2="showtext(anvari);"
+  onclick="update_map_spot-birun(get(name));"
+    	/>
+  <plugin name="scene_24" url="skin/mappoint.png" keep="true" parent="Radar-container" align="lefttop" edge="center"  zorder="1011"
+  x="158"
+  y="242 "
+  onhover2="showtext(anvari);"
+  onclick="update_map_spot-birun(get(name));"
+    	/>
+  <plugin name="scene_25" url="skin/mappoint.png" keep="true" parent="Radar-container" align="lefttop" edge="center"  zorder="1011"
+x="144"
+y="234"
+onhover2="showtext(anvari);"
+onclick="update_map_spot-birun(get(name));"
+    	/>
+  <plugin name="scene_26" url="skin/mappoint.png" keep="true" parent="Radar-container" align="lefttop" edge="center"  zorder="1011"
+x="95"
+y="237"
+onhover2="showtext(anvari);"
+onclick="update_map_spot-birun(get(name));"
+    	/>
+  <plugin name="scene_27" url="skin/mappoint.png" keep="true" parent="Radar-container" align="lefttop" edge="center"  zorder="1011"
+x="78"
+y="216"
+onhover2="showtext(anvari);"
+onclick="update_map_spot-birun(get(name));"
+    	/>
+  <plugin name="scene_28" url="skin/mappoint.png" keep="true" parent="Radar-container" align="lefttop" edge="center"  zorder="1011"
+x="50"
+y="240"
+onhover2="showtext(anvari);"
+onclick="update_map_spot-birun(get(name));"
+    	/>
+  <plugin name="scene_29" url="skin/mappoint.png" keep="true" parent="Radar-container" align="lefttop" edge="center"  zorder="1011"
+x="78"
+y="262"
+onhover2="showtext(anvari);"
+onclick="update_map_spot-birun(get(name));"
+    	/>-->
+
+  <!-- layers -->
+  <include url="plugins/swipe_gallery.xml" />
+  <layer zorder="21000" name="gallery" type="container" align="center" width="100%" height="100%" alpha="0" autoalpha="true" bgcolor="0x000000" bgalpha="0.8" keep="true">
+    <layer name="gallery_scrollarea" url="%SWFPATH%/plugins/scrollarea.swf" alturl="%SWFPATH%/plugins/scrollarea.js" keep="true" align="left" width="0" height="100%" zorder="1" direction="h" ondown="set(gallery_scrollarea_start_pos, get(x))">
+    </layer>
+    <layer name="arrow_left"  align="left"  x="10" keep="true" visible="false" zorder="2" onclick="move_image(left)" url="img/arrow_left.png"  />
+    <layer name="arrow_right" align="right" x="10" keep="true" visible="false" zorder="2" onclick="move_image(right)" url="img/arrow_right.png" />
+    <layer name="gallery_close" align="righttop" x="10" y="10" keep="true" zorder="2" onclick="hide_gallery()" url="img/close.png" />
+  </layer>
+
+  <!-- hotspots -->
+
+  <hotspot name="hs1" style="hs_gallery" ath="0" atv="0" galleryname="gallery1" />
+  <hotspot name="hs2" style="hs_gallery" ath="50" atv="20" galleryname="gallery2" />
+
+  <!-- styles -->
+
+  <style  name="hs_gallery"
+			url="img/hs_gallery.png"
+			onclick="show_gallery(get(galleryname))"
+			onhover="showtext(get(gallery[get(galleryname)].title))"
+			/>
+
+  <!-- data -->
+
+  <gallery name="gallery1" title="Title of gallery 1">
+    <img name="img1" url="img/1.jpg" title="نمایشگردی" />
+    <img name="img2" url="img/2.jpg" title="نمایشگردی" />
+    <img name="img3" url="img/3.jpg" title="نمایشگردی" />
+    <img name="img4" url="img/4.jpg" title="نمایشگردی" />
+    <img name="img5" url="img/5.jpg" title="نمایشگردی" />
+    <img name="img6" url="img/6.jpg" title="نمایشگردی" />
+    <img name="img7" url="img/7.jpg" title="نمایشگردی" />
+    <img name="img8" url="img/8.jpg" title="نمایشگردی" />
+    <img name="img9" url="img/9.jpg" title="نمایشگردی" />
+    <img name="img10" url="img/10.jpg" title="نمایشگردی" />
+    <img name="img11" url="img/11.jpg" title="نمایشگردی" />
+    <img name="img12" url="img/12.jpg" title="نمایشگردی" />
+    <img name="img13" url="img/13.jpg" title="نمایشگردی" />
+    <img name="img14" url="img/14.jpg" title="نمایشگردی" />
+    <img name="img15" url="img/15.jpg" title="نمایشگردی" />
+  </gallery>
+
+  <gallery name="gallery2" title="Some other pictures">
+    <img name="img1" url="img/pic6.jpg" title="A dog" />
+    <img name="img2" url="img/pic7.jpg" title="My cat" />
+    <img name="img3" url="img/pic8.jpg" title="Canal" />
+    <img name="img4" url="img/pic9.jpg" title="Aquarium" />
+    <img name="img5" url="img/pic10.jpg" title="Aquarium" />
+    <img name="img6" url="img/pic11.jpg" title="Aquarium" />
+  </gallery>
+</krpano>

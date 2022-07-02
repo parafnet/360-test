@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<krpano version="1.0.8">
+  <!-- activated hotpot -->
+  <plugin name="activespot" url="skin/mappointactive.png" keep="true" align="center" edge="center" visible="false" zorder="1011" />
+  <!-- radar plugin, set heading with "plugin[radar].heading" -->
+  <plugin name="radar--mafakher" url="%SWFPATH%/plugins/radar.swf" alturl="%SWFPATH%/plugins/radar.js" zorder="1" keep="true" heading="0" parent="Map5thContainer" align="lefttop" edge="center" x="0" y="0" linecolor="0" fillcolor="0xFF0000" scale="0.6" visible="false" editmode="true" />
+  <action name="activatespot--mafakher">
+		set(plugin[activespot].parent, plugin[%1]);
+		set(plugin[activespot].visible, true);
+		
+		copy(plugin[radar--mafakher].x, plugin[%1].x);
+		copy(plugin[radar--mafakher].y, plugin[%1].y);
+		
+		set(plugin[radar--mafakher].visible, true);
+		set(plugin[radar--mafakher].heading, %2);
+		
+		set(plugin[radar--mafakher].visible, true);
+		set(plugin[radar--mafakher].visible, false);
+		set(plugin[radar--atar].visible, false);
+	</action>
+  <!-- load and update map actions -->
+  <action name="update_map_spot--mafakher">
+		plugin[Map5thContainer].activatespot(%1);
+		plugin[Map5thContainer].pantospot(%1);
+		activatespot--mafakher(%1);
+		GotoMap(BTN5th);
+		loadscene(%1, null, MERGE, BLEND(1));
+	</action>
+  <action name="activatespotRadar--mafakher">
+		plugin[Map5thContainer].activatespot(%1);
+		plugin[Map5thContainer].pantospot(%1);
+		activatespot--mafakher(%1);
+		GotoMap(BTN5th);
+	</action>
+  <plugin name="scene_36" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="148" y="212" onhover2="showtext(ferdosi38);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_37" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="149" y="146" onhover2="showtext(ferdosi01);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_38" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="178" y="171" onhover2="showtext(ferdosi01);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_39" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="178" y="201" onhover2="showtext(ferdosi01);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_40" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="211" y="202" onhover2="showtext(ferdosi01);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_41" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="241" y="201" onhover2="showtext(ferdosi01);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_42" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="241" y="171" onhover2="showtext(ferdosi18);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_43" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="242" y="141" onhover2="showtext(ferdosi19);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_44" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="210" y="142" onhover2="showtext(ferdosi20);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_45" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="185" y="110" onhover2="showtext(ferdosi20);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_46" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="207" y="83" onhover2="showtext(ferdosi21);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_47" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="239" y="83" onhover2="showtext(ferdosi22);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_48" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="239" y="20" onhover2="showtext(ferdosi23);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_49" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="208" y="19" onhover2="showtext(ferdosi24);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_50" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="174" y="18" onhover2="showtext(ferdosi25);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_51" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="177" y="49" onhover2="showtext(ferdosi26);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_52" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="149" y="78" onhover2="showtext(ferdosi27);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_53" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="121" y="49" onhover2="showtext(ferdosi28);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_54" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="122" y="19" onhover2="showtext(ferdosi29);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_55" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="88" y="18" onhover2="showtext(ferdosi30);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_56" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="57" y="19" onhover2="showtext(ferdosi31);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_57" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="57" y="82" onhover2="showtext(ferdosi32);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_58" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="88" y="50" onhover2="showtext(ferdosi33);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_59" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="89" y="81" onhover2="showtext(ferdosi34);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_60" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="111" y="112" onhover2="showtext(ferdosi35);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_61" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="89" y="140" onhover2="showtext(ferdosi36);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_62" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="56" y="139" onhover2="showtext(ferdosi37);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_63" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="57" y="170" onhover2="showtext(ferdosi38);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_64" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="56" y="200" onhover2="showtext(ferdosi38);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_65" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="89" y="200" onhover2="showtext(ferdosi38);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_66" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="119" y="199" onhover2="showtext(ferdosi38);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_67" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="89" y="174" onhover2="showtext(ferdosi38);" onclick="update_map_spot--mafakher(get(name));" />
+  <plugin name="scene_68" url="skin/mappoint.png" keep="true" parent="Map5thContainer" align="lefttop" edge="center" zorder="1011" x="118" y="171" onhover2="showtext(ferdosi38);" onclick="update_map_spot--mafakher(get(name));" />
+</krpano>
